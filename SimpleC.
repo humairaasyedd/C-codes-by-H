@@ -1,0 +1,62 @@
+#include <iostream>
+#include <windows.h>
+using namespace std;
+
+int main() {
+    int number1;
+    int number2;
+    char choice;
+    char continueChoice;
+
+     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0D);
+      SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x70);
+     cout << "******************WELCOME TO SIMPLE CALCULATOR!******************" << endl;
+     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0B);
+    do {
+        cout << "ENTER 1ST NUMBER: ";
+        cin >> number1;
+        cout << "ENTER 2ND NUMBER: ";
+        cin >> number2;
+         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x0C);
+        cout << "Press a for addition" << endl;
+        cout << "Press s for subtraction" << endl;
+        cout << "Press m for multiplication" << endl;
+        cout << "Press d for division" << endl;
+        cout << "Press r for remainder" << endl;
+        cin >> choice;
+        
+        if (choice == 'a') {
+            cout << "The sum is= " << number1 + number2 << endl;
+        }
+        else if (choice == 's') {
+            cout << "The subtraction is= " << number1 - number2 << endl;
+        }
+        else if (choice == 'm') {
+            cout << "The multiplication is= " << number1 * number2 << endl;
+        }
+        else if (choice == 'd') {
+            if (number2 != 0) {
+                cout << "The division is= " << number1 / number2 << endl;
+            }
+            else {
+                cout << "Division can't be done!'" << endl;
+            }
+        }
+        else if (choice == 'r') {
+            cout << "The remainder is= " << number1 % number2 << endl;
+        }
+        else {
+            cout << "INVALID CHOICE!" << endl;
+        }
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x07);
+        cout << "Do you want to continue (y/n): ";
+        cin >> continueChoice;
+        
+    } while (continueChoice == 'y' || continueChoice == 'Y');
+    
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 0x06);
+    
+    cout << "Thank you for using the simple calculator!" << endl;
+
+    return 0;
+}
