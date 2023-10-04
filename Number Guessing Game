@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <windows.h> 
+using namespace std;
+
+void setColor(int colorCode) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorCode);
+}
+
+int main() {
+    string name;
+    char input;
+    int userGuess;
+    int score = 0;
+    srand(time(0));
+    
+    do {
+        int targetNumber = rand() % 10 + 1;
+        setColor(3); // blue
+        cout << "\t\tWELCOME TO NUMBER GUESSING GAME" << endl;
+        setColor(5); // purple
+        cout << "ENTER YOUR NAME: ";
+        setColor(7); // white
+        cin >> name;
+
+        do {
+            setColor(7); // white
+
+            cout << "Enter any number in between 1 to 10: ";
+            cin >> userGuess;
+
+            if (userGuess == targetNumber) {
+                setColor(10); // green
+                cout << "CONGRATULATIONS! You Won." << endl;
+                score++;
+            } else if (userGuess < targetNumber) {
+                setColor(12); // red
+                cout << "Think higher." << endl;
+            } else {
+                setColor(12); // red
+                cout << "Think lower." << endl;
+            }
+
+            setColor(7); // white
+
+            cout << "WOULD YOU LIKE TO TRY AGAIN? (y/n):    ";
+            cin >> input;
+
+            if (tolower(input) == 'n') {
+                cout << "Exiting the game!" << endl;
+                break;
+            }
+
+        } while (true);
+         setColor(8); // grey
+        cout << "YOUR SCORE IS: " << score << endl;
+          setColor(7); // white
+        cout << "Play again? (y/n): ";
+        cin >> input;
+
+        if (tolower(input) != 'y') {
+        	setColor(25); // blue background with white text
+            cout << "THANK YOU! GOODBYE" << endl;
+            setColor(7); // white
+            break;
+        }
+
+        score = 0;
+
+    } while (true);
+
+    return 0;
+}
